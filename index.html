@@ -165,9 +165,19 @@
             font-size: 0.95rem;
         }
 
-        /* Full Width Scratchpad */
-        .scratchpad-area {
+        /* Full Width Panels */
+        .full-width {
             grid-column: 1 / -1;
+        }
+
+        .concept-image {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid var(--neon-cyan);
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+            margin: 1rem auto 0 auto;
+            display: block;
         }
 
         textarea {
@@ -245,8 +255,15 @@
             </ul>
         </div>
 
+        <!-- IMAGE PANEL -->
+        <div class="panel full-width">
+            <h2>// Combat Inspiration</h2>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Target Visual: High-stakes encounter with a massive unique boss, utilizing circular skill markers and active parry regions.</p>
+            <img src="https://res.ldrescdn.com/rms/ldplayer/process/img/92200696b1ab4dd2b267f02f9600a9641764191090.jpg?x-oss-process=image/format,webp/quality,Q_100/resize,w_1024" alt="Roblox Anime Boss Fight Reference" class="concept-image">
+        </div>
+
         <!-- SCRATCHPAD FOR BRAINSTORMING -->
-        <div class="panel scratchpad-area">
+        <div class="panel full-width">
             <h2>// Live Idea Workspace</h2>
             <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem;">
                 Type your raw ideas, boss mechanics, or script notes below. This box auto-saves to your local browser storage.
