@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Project: Frontier - Design Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #0a0e17;
+            --panel-bg: rgba(16, 24, 40, 0.85);
+            --neon-cyan: #00f0ff;
+            --neon-gold: #ffb700;
+            --text-main: #e2e8f0;
+            --text-dim: #94a3b8;
+            --border-glow: drop-shadow(0 0 8px rgba(0, 240, 255, 0.3));
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 240, 255, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(255, 183, 0, 0.05) 0px, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        /* HUD Header */
+        header {
+            border-bottom: 2px solid var(--neon-cyan);
+            padding-bottom: 1rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            filter: var(--border-glow);
+        }
+
+        .logo-area h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+        }
+
+        .logo-area span {
+            color: var(--neon-gold);
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .status-badge {
+            font-size: 0.85rem;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 0.25rem 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Glassmorphic Panels */
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-left: 4px solid var(--neon-cyan);
+            padding: 1.5rem;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel.gold-variant {
+            border-left-color: var(--neon-gold);
+            border-solid: 1px rgba(255, 183, 0, 0.2);
+        }
+
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 95%, rgba(0, 240, 255, 0.05) 95%);
+            pointer-events: none;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .panel h2 { color: var(--neon-cyan); }
+        .panel.gold-variant h2 { color: var(--neon-gold); }
+
+        /* Feature Lists */
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.5;
+        }
+
+        li::before {
+            content: '➢';
+            position: absolute;
+            left: 0;
+            color: var(--neon-cyan);
+        }
+
+        .gold-variant li::before {
+            color: var(--neon-gold);
+        }
+
+        li strong {
+            color: #fff;
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 0.15rem;
+        }
+
+        li p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        /* Full Width Scratchpad */
+        .scratchpad-area {
+            grid-column: 1 / -1;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            background: rgba(5, 8, 15, 0.6);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 4px;
+            padding: 1rem;
+            color: var(--text-main);
+            font-size: 1rem;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- HUD HEADER -->
+    <header>
+        <div class="logo-area">
+            <span>Roblox Project Design Doc</span>
+            <h1>Frontier Universe</h1>
+        </div>
+        <div class="status-badge">Phase 01: Pre-Production</div>
+    </header>
+
+    <!-- MAIN COGNITIVE GRID -->
+    <div class="grid">
+        
+        <!-- CORE PROGRESSION MECHANIC -->
+        <div class="panel">
+            <h2>// Unique Progression</h2>
+            <ul>
+                <li>
+                    <strong>The Unique Monster Rule</strong>
+                    <p>Standard mob grinding won't make you god-tier. To truly level up and alter your character's standing, players must track, hunt, and defeat entirely unique world bosses.</p>
+                </li>
+                <li>
+                    <strong>World-Altering Marks</strong>
+                    <p>Defeating a unique boss leaves a permanent impact or curse/bless mark on the player, unlocking secret scenarios, custom skills, or specific NPC interactions.</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- COMBAT & GEAR -->
+        <div class="panel gold-variant">
+            <h2>// Tactical Combat Loop</h2>
+            <ul>
+                <li>
+                    <strong>Boss-Centric Gameplay</strong>
+                    <p>Combat focuses heavily on mechanical boss fights inspired by high-stakes raid bosses. Telegraphed attacks, dodging, and precision parries are vital.</p>
+                </li>
+                <li>
+                    <strong>Weapon & Skill Resonance</strong>
+                    <p>Instead of just replacing gear, players level up their specific weapons and master custom skill branches through continuous usage and rare drops.</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- SCRATCHPAD FOR BRAINSTORMING -->
+        <div class="panel scratchpad-area">
+            <h2>// Live Idea Workspace</h2>
+            <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem;">
+                Type your raw ideas, boss mechanics, or script notes below. This box auto-saves to your local browser storage.
+            </p>
+            <textarea id="brainstorm-box" placeholder="Example: Lycagon-style wolf boss that spawns only during moonlight..."></textarea>
+        </div>
+
+    </div>
+
+    <footer>
+        Link Start // Continuous Save Active
+    </footer>
+
+</div>
+
+<script>
+    // Simple Auto-Save function for your brainstorming session
+    const scratchpad = document.getElementById('brainstorm-box');
+    
+    // Load saved notes if they exist
+    if (localStorage.getItem('roblox_frontiers_notes')) {
+        scratchpad.value = localStorage.getItem('roblox_frontiers_notes');
+    }
+
+    // Listen for typing and save to local storage
+    scratchpad.addEventListener('input', () => {
+        localStorage.setItem('roblox_frontiers_notes', scratchpad.value);
+    });
+</script>
+
+</body>
+</html>
